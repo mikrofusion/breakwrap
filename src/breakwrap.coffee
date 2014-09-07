@@ -1,17 +1,17 @@
 splitString = (str, length) ->
-  [str, rest...] = str.split '\n'
-  rest = rest.join '\n'
+  [first, tmp...] = str.split '\n'
+  rest = tmp.join "\n"
 
-  if str.length < length
+  if first.length < length
     if rest.length == 0
-      str
+      first
     else
-      "#{str}\n#{splitString(rest, length)}"
+      "#{first}\n#{splitString(rest, length)}"
   else
-    min = Math.min(str.length, length)
-    head = str.substring(0, min)
-    tail = str.substring(min, str.length)
-    "#{head}\n#{splitString(tail + rest, length)}"
+    min = Math.min(first.length, length)
+    head = first.substring(0, min)
+    tail = first.substring(min, first.length)
+    "#{head}\n#{splitString(tail + '\n' + rest, length)}"
 
 module.exports = exports = (output, width = null) ->
   throw new Error 'breakwrap requires an output stream.' if not output?

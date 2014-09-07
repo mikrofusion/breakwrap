@@ -40,9 +40,17 @@ describe 'breakwrap', ->
           expect(result.split('\n').length).to.eq 2
 
       describe 'when the string is already split over multiple lines', ->
-        beforeEach ->
-          output.write 'this is a longer string that will not be \nsplit over multiple lines.'
+        describe 'when the split is before the console ends', ->
+          beforeEach ->
+            output.write 'this is a longer string that will not be \nsplit over multiple lines.'
 
-        it 'does not modify the already split string', ->
-          expect(result.split('\n').length).to.eq 2
+          it 'does not modify the already split string', ->
+            expect(result.split('\n').length).to.eq 2
+
+        describe 'when the split is after the console ends', ->
+          beforeEach ->
+            output.write 'this is a longer string that will be split over multiple\nlines.\n'
+
+          it 'modifies the already split string and keeps the existing splits', ->
+            expect(result.split('\n').length).to.eq 3
 
