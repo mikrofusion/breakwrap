@@ -1,0 +1,51 @@
+{
+  "name": "breakwrap",
+  "version": "0.0.1",
+  "author": "Mike Groseclose",
+  "email": "mike.groseclose@gmail.com",
+  "description": "breakwrap prevents wrapping by automatically breaking lines when they reach the edge of the screen.",
+  "homepage": "http://github.com/mikegroseclose/breakwrap",
+  "author": {
+    "name": "Mike Groseclose",
+    "email": "mike.groseclose@gmail.com",
+    "url": "http://mikegroseclose.com"
+  },
+  "keywords": [
+    "breakwrap",
+    "break-wrap",
+    "break",
+    "wrap",
+    "console",
+    "terminal"
+  ],
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mikegroseclose/breakwrap.git"
+  },
+  "scripts": {
+    "test": "./runtests",
+    "start": "gulp"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "gulp": "^3.5.6",
+    "gulp-coffee": "^1.4.3",
+    "gulp-coffeelint": "0.3.3",
+    "gulp-concat": "^2.2.0",
+    "gulp-plumber": "^0.5.6",
+    "gulp-util": "^2.2.14",
+    "coffee-script": "^1.7.1",
+    "mocha": "1.17.1",
+    "chai": "1.9.0",
+    "sinon": "1.10.3"
+  },
+  "licenses": [{
+    "type": "MIT",
+    "url": "http://github.com/mikegroseclose/breakwrap/raw/master/LICENSE"
+  }]
+}

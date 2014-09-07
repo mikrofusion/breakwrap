@@ -1,0 +1,40 @@
+breakwrap = require '../dist/index.js'
+
+expect = require('chai').expect
+sinon = require 'sinon'
+
+describe 'breakwrap', ->
+  describe 'when NOT initialized with an output stream', ->
+    it 'throws an error', ->
+      expect(-> breakwrap()).to.throw('breakwrap requires an output stream.')
+
+  describe 'when initialized with an output stream', ->
+    result = undefined
+    output = undefined
+    width = undefined
+
+    beforeEach ->
+      result = ''
+      output = { write: (str) -> result = str }
+      breakwrap(output, width)
+
+    describe 'and given a string shorter than the console width', ->
+      before ->
+        width = 100
+
+      beforeEach ->
+        output.write 'this is a shorter string.'
+
+      it 'does not modify the original string', ->
+        expect(result).to.eq 'this is a shorter string.'
+
+    describe 'and given a string longer than the console width', ->
+      before ->
+        width = 50
+
+      beforeEach ->
+        output.write 'this is a longer string that will be split over multiple lines.'
+
+      it 'modifies the original string into multiple strings', ->
+        expect(result.split('\n').length).to.eq 2
+
