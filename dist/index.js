@@ -21,7 +21,7 @@ module.exports = exports = function(output, width) {
   if (output == null) {
     throw new Error('breakwrap requires an output stream.');
   }
-  width || (width = process.stdout.columns || 1);
+  width || (width = output.columns || process.stdout.columns || 1);
   result = '';
   output._originalWrite = output.write;
   return output.write = function() {

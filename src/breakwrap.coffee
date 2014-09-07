@@ -10,7 +10,7 @@ splitString = (str, length) ->
 module.exports = exports = (output, width = null) ->
   throw new Error 'breakwrap requires an output stream.' if not output?
 
-  width ||= (process.stdout.columns || 1)
+  width ||= (output.columns || process.stdout.columns || 1)
 
   result = ''
   output._originalWrite = output.write
