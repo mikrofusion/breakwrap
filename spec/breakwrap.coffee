@@ -54,3 +54,11 @@ describe 'breakwrap', ->
           it 'modifies the already split string and keeps the existing splits', ->
             expect(result.split('\n').length).to.eq 3
 
+
+    describe 'when the cursor is not at 0', ->
+      it 'takes into account the current cursor position when deciding to split the string', ->
+        # TODO
+
+    describe 'when special escape strings are used in the string', ->
+      it 'takes into account the escape strings when deciding to split the string', ->
+        # TODO
