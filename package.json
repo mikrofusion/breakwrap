@@ -1,6 +1,6 @@
 {
   "name": "breakwrap",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Mike Groseclose",
   "email": "mike.groseclose@gmail.com",
   "description": "breakwrap prevents wrapping by automatically breaking lines when they reach the edge of the screen.",
