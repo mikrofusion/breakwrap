@@ -3,6 +3,9 @@ var exports, splitString,
 
 splitString = function(str, length) {
   var first, head, min, rest, tail, tmp, _ref;
+  if (str === '\n') {
+    return '\n';
+  }
   _ref = str.split('\n'), first = _ref[0], tmp = 2 <= _ref.length ? __slice.call(_ref, 1) : [];
   rest = tmp.join("\n");
   if (first.length < length) {

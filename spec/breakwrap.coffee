@@ -18,6 +18,27 @@ describe 'breakwrap', ->
       output = { write: (str) -> result = str }
       breakwrap(output, width)
 
+
+    describe 'when the string is empty', ->
+      before ->
+        width = 10
+
+      beforeEach ->
+        output.write ''
+
+      it 'returns the emtpy string', ->
+        expect(result).to.eq ''
+
+    describe 'when the string is a single newline shorter than the console.', ->
+      before ->
+        width = 10
+
+      beforeEach ->
+        output.write '\n'
+
+      it 'it returns the newline character', ->
+        expect(result).to.eq '\n'
+
     describe 'and given a string shorter than the console width', ->
       before ->
         width = 100
@@ -49,10 +70,10 @@ describe 'breakwrap', ->
 
         describe 'when the split is after the console ends', ->
           beforeEach ->
-            output.write 'this is a longer string that will be split over multiple\nlines.\n'
+            output.write 'this is a longer string that will be split over multiple\n\nlines.\n'
 
           it 'modifies the already split string and keeps the existing splits', ->
-            expect(result.split('\n').length).to.eq 3
+            expect(result.split('\n').length).to.eq 4
 
 
     describe 'when the cursor is not at 0', ->

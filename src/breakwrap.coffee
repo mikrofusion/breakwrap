@@ -1,4 +1,6 @@
 splitString = (str, length) ->
+  return '\n' if str == '\n'
+
   [first, tmp...] = str.split '\n'
   rest = tmp.join "\n"
 
