@@ -13,8 +13,8 @@ module.exports = exports = (output, width = null) ->
   width ||= (output.columns || process.stdout.columns || 1)
 
   result = ''
-  output._originalWrite = output.write
+  output._breakwrapOriginalWrite = output.write
 
   output.write = (args...) ->
-    output._originalWrite splitString(args[0], width)
+    output._breakwrapOriginalWrite splitString(args[0], width)
 

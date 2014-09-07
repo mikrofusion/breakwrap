@@ -23,10 +23,10 @@ module.exports = exports = function(output, width) {
   }
   width || (width = output.columns || process.stdout.columns || 1);
   result = '';
-  output._originalWrite = output.write;
+  output._breakwrapOriginalWrite = output.write;
   return output.write = function() {
     var args;
     args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
-    return output._originalWrite(splitString(args[0], width));
+    return output._breakwrapOriginalWrite(splitString(args[0], width));
   };
 };
