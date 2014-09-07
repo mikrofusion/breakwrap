@@ -2,14 +2,20 @@ var exports, splitString,
   __slice = [].slice;
 
 splitString = function(str, length) {
-  var head, min, tail;
+  var head, min, rest, tail, _ref;
+  _ref = str.split('\n'), str = _ref[0], rest = 2 <= _ref.length ? __slice.call(_ref, 1) : [];
+  rest = rest.join('\n');
   if (str.length < length) {
-    return str;
+    if (rest.length === 0) {
+      return str;
+    } else {
+      return "" + str + "\n" + (splitString(rest, length));
+    }
   } else {
     min = Math.min(str.length, length);
     head = str.substring(0, min);
     tail = str.substring(min, str.length);
-    return "" + head + "\n" + (splitString(tail, length));
+    return "" + head + "\n" + (splitString(tail + rest, length));
   }
 };
 
