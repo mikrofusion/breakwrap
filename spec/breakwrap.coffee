@@ -15,7 +15,7 @@ describe 'breakwrap', ->
 
     beforeEach ->
       result = ''
-      output = { write: (str) -> result = str }
+      output = { write: (str) -> result += str }
       breakwrap(output, width)
 
 
@@ -58,7 +58,7 @@ describe 'breakwrap', ->
           output.write 'this is a longer string that will be split over multiple lines.'
 
         it 'modifies the original string into multiple strings', ->
-          expect(result.split('\n').length).to.eq 2
+          expect(result).to.eq 'this is a longer string that will be split over mu\nltiple lines.'
 
       describe 'when the string is already split over multiple lines', ->
         describe 'when the split is before the console ends', ->
@@ -66,19 +66,26 @@ describe 'breakwrap', ->
             output.write 'this is a longer string that will not be \nsplit over multiple lines.'
 
           it 'does not modify the already split string', ->
-            expect(result.split('\n').length).to.eq 2
+            expect(result).to.eq 'this is a longer string that will not be \nsplit over multiple lines.'
 
         describe 'when the split is after the console ends', ->
           beforeEach ->
             output.write 'this is a longer string that will be split over multiple\n\nlines.\n'
 
           it 'modifies the already split string and keeps the existing splits', ->
-            expect(result.split('\n').length).to.eq 4
+            expect(result).to.eq 'this is a longer string that will be split over mu\nltiple\n\nlines.\n'
 
 
     describe 'when the cursor is not at 0', ->
+      before ->
+        width = 6
+
+      beforeEach ->
+        output.write '12345'
+        output.write '678910'
+
       it 'takes into account the current cursor position when deciding to split the string', ->
-        # TODO
+        #expect(result).to.eq '123456\n78910'
 
     describe 'when special escape strings are used in the string', ->
       it 'takes into account the escape strings when deciding to split the string', ->

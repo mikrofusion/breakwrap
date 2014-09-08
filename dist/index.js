@@ -1,24 +1,28 @@
 var exports, splitString,
   __slice = [].slice;
 
-splitString = function(str, length) {
+splitString = function(str, length, endsInNL) {
   var first, head, min, rest, tail, tmp, _ref;
-  if (str === '\n') {
-    return '\n';
+  if (endsInNL === void 0) {
+    endsInNL = str[str.length - 1] === '\n';
   }
   _ref = str.split('\n'), first = _ref[0], tmp = 2 <= _ref.length ? __slice.call(_ref, 1) : [];
   rest = tmp.join("\n");
   if (first.length < length) {
     if (rest.length === 0) {
-      return first;
+      if (endsInNL) {
+        return "" + first + "\n";
+      } else {
+        return first;
+      }
     } else {
-      return "" + first + "\n" + (splitString(rest, length));
+      return "" + first + "\n" + (splitString(rest, length, endsInNL));
     }
   } else {
     min = Math.min(first.length, length);
     head = first.substring(0, min);
     tail = first.substring(min, first.length);
-    return "" + head + "\n" + (splitString(tail + '\n' + rest, length));
+    return "" + head + "\n" + (splitString(tail + '\n' + rest, length, endsInNL));
   }
 };
 
