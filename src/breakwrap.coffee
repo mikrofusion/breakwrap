@@ -1,4 +1,6 @@
 ConsolePos = require 'console-pos'
+stringLength = require 'string-length'
+ansiRegex = require('ansi-regex')()
 
 splitString = (str, length, offset, endsInNL) ->
   if endsInNL == undefined
@@ -7,7 +9,7 @@ splitString = (str, length, offset, endsInNL) ->
   [first, tmp...] = str.split '\n'
   rest = tmp.join "\n"
 
-  if first.length < length - offset
+  if stringLength(first) < length - offset
     if rest.length == 0
       if endsInNL
         "#{first}\n"
@@ -16,7 +18,17 @@ splitString = (str, length, offset, endsInNL) ->
     else
       "#{first}\n#{splitString(rest, length, 0, endsInNL)}"
   else
-    min = Math.min(first.length, length - offset)
+    min = Math.min(stringLength(first), length - offset)
+
+    escapeArray = str.match ansiRegex
+
+    if escapeArray != null
+      escapeArray.forEach (escape) ->
+        start = str.indexOf(escape)
+        end = escape.length
+        if min > start && min < end
+          min += end
+
     head = first.substring(0, min)
     tail = first.substring(min, first.length)
     "#{head}\n#{splitString(tail + '\n' + rest, length, 0, endsInNL)}"

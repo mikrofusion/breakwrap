@@ -95,5 +95,15 @@ describe 'breakwrap', ->
         output.write '678910'
 
       it 'takes into account the escape strings when deciding to split the string', ->
-        # TODO
-        #expect(result).to.eq '12\x1b[;38;5;1m3456\n78910'
+        expect(result).to.eq '12\x1b[;38;5;1m3456\n78910'
+
+    describe 'when special escape strings are used in the string (and cross the split)', ->
+      before ->
+        width = 6
+
+      beforeEach ->
+        output.write '12345'
+        output.write '\x1b[;38;5;1m678910'
+
+      it 'takes into account the escape strings when deciding to split the string', ->
+        expect(result).to.eq '12345\x1b[;38;5;1m6\n78910'
