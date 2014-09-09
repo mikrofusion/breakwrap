@@ -75,7 +75,6 @@ describe 'breakwrap', ->
           it 'modifies the already split string and keeps the existing splits', ->
             expect(result).to.eq 'this is a longer string that will be split over mu\nltiple\n\nlines.\n'
 
-
     describe 'when the cursor is not at 0', ->
       before ->
         width = 6
@@ -85,8 +84,16 @@ describe 'breakwrap', ->
         output.write '678910'
 
       it 'takes into account the current cursor position when deciding to split the string', ->
-        #expect(result).to.eq '123456\n78910'
+        expect(result).to.eq '123456\n78910'
 
     describe 'when special escape strings are used in the string', ->
+      before ->
+        width = 6
+
+      beforeEach ->
+        output.write '12\x1b[;38;5;1m345'
+        output.write '678910'
+
       it 'takes into account the escape strings when deciding to split the string', ->
         # TODO
+        #expect(result).to.eq '12\x1b[;38;5;1m3456\n78910'
