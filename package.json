@@ -31,7 +31,7 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "console-pos": "0.0.3",
+    "console-pos": "1.0.0",
     "string-length": "1.0.0",
     "ansi-regex": "1.1.0"
   },
