@@ -37,7 +37,6 @@ module.exports = exports = (output, width = null) ->
   throw new Error 'breakwrap requires an output stream.' if not output?
 
 
-  width ||= (output.columns || process.stdout.columns || 1)
 
   consolePos = ConsolePos output
 
@@ -45,6 +44,7 @@ module.exports = exports = (output, width = null) ->
   output._breakwrapOriginalWrite = output.write
 
   output.write = (args...) ->
+    width = (width || output.columns || process.stdout.columns || 1)
     offset = consolePos.row()
     output._breakwrapOriginalWrite(
       splitString(args[0], width, offset)

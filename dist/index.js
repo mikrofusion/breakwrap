@@ -51,13 +51,13 @@ module.exports = exports = function(output, width) {
   if (output == null) {
     throw new Error('breakwrap requires an output stream.');
   }
-  width || (width = output.columns || process.stdout.columns || 1);
   consolePos = ConsolePos(output);
   result = '';
   output._breakwrapOriginalWrite = output.write;
   return output.write = function() {
     var args, offset;
     args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+    width = width || output.columns || process.stdout.columns || 1;
     offset = consolePos.row();
     return output._breakwrapOriginalWrite(splitString(args[0], width, offset));
   };
