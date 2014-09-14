@@ -27,5 +27,5 @@ require('breakwrap')(process.stdout)
 [npm-url]: https://npmjs.org/package/breakwrap
 [npm-image]: https://badge.fury.io/js/breakwrap.png
 
-[travis-url]: http://travis-ci.org/mikegroseclose/breakwrap
-[travis-image]: https://secure.travis-ci.org/mikegroseclose/breakwrap.png?branch=master
+[travis-url]: http://travis-ci.org/mikrofusion/breakwrap
+[travis-image]: https://secure.travis-ci.org/mikrofusion/breakwrap.png?branch=master

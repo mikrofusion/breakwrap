@@ -4,11 +4,10 @@
   "author": "Mike Groseclose",
   "email": "mike.groseclose@gmail.com",
   "description": "breakwrap prevents wrapping by automatically breaking lines when they reach the edge of the screen.",
-  "homepage": "http://github.com/mikegroseclose/breakwrap",
+  "homepage": "http://github.com/mikrofusion/breakwrap",
   "author": {
     "name": "Mike Groseclose",
     "email": "mike.groseclose@gmail.com",
-    "url": "http://mikegroseclose.com"
   },
   "keywords": [
     "breakwrap",
@@ -21,7 +20,7 @@
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mikegroseclose/breakwrap.git"
+    "url": "git://github.com/mikrofusion/breakwrap.git"
   },
   "scripts": {
     "test": "./runtests",
@@ -49,6 +48,6 @@
   },
   "licenses": [{
     "type": "MIT",
-    "url": "http://github.com/mikegroseclose/breakwrap/raw/master/LICENSE"
+    "url": "http://github.com/mikrofusion/breakwrap/raw/master/LICENSE"
   }]
 }
