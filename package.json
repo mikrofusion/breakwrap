@@ -1,13 +1,13 @@
 {
   "name": "breakwrap",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Mike Groseclose",
   "email": "mike.groseclose@gmail.com",
   "description": "breakwrap prevents wrapping by automatically breaking lines when they reach the edge of the screen.",
   "homepage": "http://github.com/mikrofusion/breakwrap",
   "author": {
     "name": "Mike Groseclose",
-    "email": "mike.groseclose@gmail.com",
+    "email": "mike.groseclose@gmail.com"
   },
   "keywords": [
     "breakwrap",
